@@ -8,6 +8,9 @@ import br.una.prova.entity.Filme;
 
 public interface FilmeRepository extends CrudRepository<Filme, Integer>{
 	
-	List <Filme> findByNomeLike(String nome);
-
+	public List <Filme> findByNomeLike(String nome);
+	
+	public List <Filme> findByImdbGreaterThan(int imdb);
+	
+	//public List <Filme> findByNomeIgnoreCaseLikeAndImdbGreaterThan (String nome, int imdb);
 }

@@ -8,6 +8,26 @@
 </head>
 <body>
 <div class="container">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-6">
+            	<p><a th:href="@{/novo}" class="btn btn-primary">Novo</a></p>            
+            </div>
+            <div class="col-md-6">
+            	<form th:action="@{/buscar}" method="get" class="form-inline">
+	                <button type="submit" class="btn btn-default glyphicon glyphicon-search">Filmes Imdb maior que 60%</button>
+            	</form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+		<div class="col-md-12">
+			<p class="text-center font-weight-bold">Lista de filmes cadastrados</p>
+		</div>
+   	</div>
+
     <div class="row">
         <div class="col-sm-12">
             
@@ -63,7 +83,7 @@
             <tr th:each="filme: ${filmes}">
             	<td th:text="${filme.id}"></td>
         		<td th:text="${filme.nome}"></td>
-        		<td th:text="2017-${filme.ano}"></td>
+        		<td><span th:text="${data}-${filme.ano}"></span> anos (<span th:text="${filme.ano}"></span>)</td>
         		<td th:text="${filme.imdb}"></td>
         		<td>
         			<div class="btn-group" role="group" aria-label="Ações">
@@ -78,11 +98,7 @@
         </table>
         </div>
     </div>
-    <div class="row">
-        <div class="col-sm-12">
-            <a th:href="@{/novo}" class="btn btn-primary">Novo</a>
-        </div>
-    </div>
+
 </div>
 </body>
 </html>
