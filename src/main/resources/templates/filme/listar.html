@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Listar Filmes</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+          integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous"/>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>A quanto tempo foi lançado</th>
+                <th>Imdb</th>
+                <th>Ações</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Clube da Luta</td>
+                <td>18 anos (1999)</td>
+                <td> </td>
+                <td>
+                    <div class="btn-group" role="group" aria-label="Ações">
+                        <a th:href="@{/editar?(filmeId=1)}" class="btn btn-info btn-sm">Editar</a>
+                        <a th:href="@{/delete?(filmeId=1)}" class="btn btn-danger btn-sm">Excluir</a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Matrix</td>
+                <td>18 anos (1999)</td>
+                <td> </td>
+                <td>
+                    <div class="btn-group" role="group" aria-label="Ações">
+                        <a th:href="@{/editar?(filmeId=2)}" class="btn btn-info btn-sm">Editar</a>
+                        <a th:href="@{/delete?(filmeId=2)}" class="btn btn-danger btn-sm">Excluir</a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>Pulp Fiction</td>
+                <td>23 anos (1994)</td>
+                <td> </td>
+                <td>
+                    <div class="btn-group" role="group" aria-label="Ações">
+                        <a th:href="@{/editar?(filmeId=3)}" class="btn btn-info btn-sm">Editar</a>
+                        <a th:href="@{/delete?(filmeId=3)}" class="btn btn-danger btn-sm">Excluir</a>
+                    </div>
+                </td>        
+            </tr>
+            </tbody>
+   			<tbody>
+            <tr th:each="filme: ${filmes}">
+            	<td th:text="${filme.id}"></td>
+        		<td th:text="${filme.nome}"></td>
+        		<td th:text="2017-${filme.ano}"></td>
+        		<td th:text="${filme.imdb}"></td>
+        		<td>
+        			<div class="btn-group" role="group" aria-label="Ações">
+        				<a th:href="@{/{id}(id=${filme.id})}" class="btn btn-info btn-sm">Editar</a>
+        				<a th:href="@{/excluir/{id}(id=${filme.id})}" class="btn btn-danger btn-sm">Excluir</a>
+        			</div>
+        			
+        		</td>
+    		</tr>
+            
+            </tbody>
+        </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <a th:href="@{/novo}" class="btn btn-primary">Novo</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
